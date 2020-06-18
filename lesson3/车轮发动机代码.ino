@@ -1,0 +1,63 @@
+char ch=' ';
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(6,OUTPUT);
+  pinMode(7,OUTPUT);
+  pinMode(8,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(2,OUTPUT);
+  pinMode(3,OUTPUT);
+}
+//w前进，s后退,e故障,a右转，d左转
+void loop()
+{
+  if(Serial.available()>0){
+  ch=Serial.read();
+    switch(ch)
+    {
+     case'w':
+     digitalWrite(6,HIGH);
+     digitalWrite(7,LOW);
+     digitalWrite(8,HIGH);
+     digitalWrite(9,LOW);
+     digitalWrite(2,LOW);
+     digitalWrite(3,LOW);
+     break;
+     case'a':
+     digitalWrite(6,HIGH);
+     digitalWrite(7,LOW);
+     digitalWrite(9,HIGH);
+     digitalWrite(8,LOW);
+     digitalWrite(2,LOW);
+     digitalWrite(3,LOW);
+     break;
+     case'd':
+     digitalWrite(7,HIGH);
+     digitalWrite(6,LOW);
+     digitalWrite(8,HIGH);
+     digitalWrite(9,LOW);
+     digitalWrite(2,LOW);
+     digitalWrite(3,LOW);
+     break;
+     case's':
+     digitalWrite(7,HIGH);
+     digitalWrite(6,LOW);
+     digitalWrite(9,HIGH);
+     digitalWrite(8,LOW);
+     digitalWrite(2,LOW);
+     digitalWrite(3,LOW);
+     break;
+     case'e':
+     digitalWrite(6,LOW);
+     digitalWrite(7,LOW);
+     digitalWrite(8,LOW);
+     digitalWrite(9,LOW);
+     digitalWrite(2,HIGH);
+     digitalWrite(3,LOW);
+     break;
+     default:
+     break;
+    }
+  }
+}
